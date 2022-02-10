@@ -1,0 +1,44 @@
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+	
+	static int sum=0;
+	public static int sumOfAllNode(TreeNode<Integer> root){
+	
+
+        if(root==null)
+        {
+            return 0;
+        }
+        int result=root.data;
+        result+=sumChildNodes(root);
+        return result;
+	}
+    public static int sumChildNodes(TreeNode<Integer> root)
+    {
+       
+	    
+		for(int i=0;i<root.children.size();i++)
+		{
+			
+			sum+=root.children.get(i).data;
+			int childCount=sumChildNodes(root.children.get(i));
+		
+		}
+	
+		return sum;
+    }
+    
+}

@@ -1,0 +1,48 @@
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class LinkedListNode<T> {
+        T data;
+        LinkedListNode<T> next;
+    
+        public LinkedListNode(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+public class Solution {
+
+
+	public static LinkedListNode<Integer> deleteNodeRec(LinkedListNode<Integer> head, int pos) {
+    	//Your code goes here
+        LinkedListNode<Integer> start=head,prev=head;
+        if(pos==0)
+        {
+            return head.next;
+        }
+        int c=0;
+        while(prev!=null)
+        {
+            c++;
+            prev=prev.next;
+        }
+        if(pos>=c)
+        {
+            return head;
+        }
+        int i=0;
+       while(i<pos-1)
+           
+       {
+           start=start.next;
+           i++;
+       }
+        start.next=start.next.next;
+        
+        return head;
+	}
+
+}

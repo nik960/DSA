@@ -1,0 +1,23 @@
+
+public class Solution {
+
+	public static void printIthNode(LinkedListNode<Integer> head, int i){
+		//Your code goes here
+        LinkedListNode<Integer> start=head;
+        int k=0;
+        while(start!=null)
+        {
+            k++;
+             start=start.next;
+            if(k==i)
+            {
+                System.out.println(start.data);
+                break;
+            }
+           
+            
+        }
+        
+        
+	}
+}

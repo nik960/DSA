@@ -1,0 +1,59 @@
+import java.util.*;
+public class Solution {
+
+	/*
+	 * Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> { T data; BinaryTreeNode<T> left; BinaryTreeNode<T>
+	 * right;
+	 * 
+	 * public BinaryTreeNode(T data) { this.data = data; } }
+	 */
+
+	/*
+	 * LinkedList Node Class
+	 *
+	 * 
+	 * class LinkedListNode<T> { T data; LinkedListNode<T> next;
+	 * 
+	 * public LinkedListNode(T data) { this.data = data; } }
+	 */
+
+	public static LinkedListNode<Integer> constructLinkedList(BinaryTreeNode<Integer> root) {
+        
+        ArrayList<Integer> arr=new ArrayList<>();
+        inOrder(root,arr);
+        Collections.sort(arr);
+        LinkedListNode<Integer> head=null;
+        LinkedListNode<Integer> tail=null;
+        int i=0;
+        while(i<arr.size())
+        {
+            LinkedListNode<Integer> newNode=new LinkedListNode<>(arr.get(i));
+            if(head==null)
+            {
+                head=newNode;
+                tail=newNode;
+            }
+            else
+            {
+                tail.next=newNode;
+                tail=tail.next;
+            }
+            i++;
+        }
+        return head;
+        
+
+	}
+    public static void inOrder(BinaryTreeNode<Integer> root,ArrayList<Integer> arr)
+    {
+        if(root==null)
+        {
+            return;
+        }
+        arr.add(root.data);
+        inOrder(root.left,arr);
+        inOrder(root.right,arr);
+    }
+}

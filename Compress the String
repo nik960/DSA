@@ -1,0 +1,30 @@
+public class Solution {
+	public static String getCompressedString(String str) {
+		// Write your code here.
+        String s="";
+        s+=str.charAt(0);
+        int freq=1;
+        
+        for(int i=1;i<=str.length();i++)
+        {
+            if(i==str.length()){
+                if(freq>1){
+                    s+=(char)(freq+'0');
+                }
+            }
+            else if(s.charAt(s.length()-1)==str.charAt(i)){
+                freq++;
+            }
+            else{
+                if(freq>1){
+                    s+=(char)(freq+'0');
+                }
+                s+=str.charAt(i);
+                freq=1;
+            }
+        }
+        
+        return s;
+	}
+
+}

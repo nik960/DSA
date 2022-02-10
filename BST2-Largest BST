@@ -1,0 +1,60 @@
+import java.util.*;
+public class Solution {
+	/*
+	 * BinaryTreeNode class
+	 * 
+	 * class BinaryTreeNode<T> 
+	 * { 
+	 * 		T data; 
+	 * 		BinaryTreeNode<T> left; 
+	 * 		BinaryTreeNode<T> right;
+	 *		public BinaryTreeNode(T data) 
+	 *		{
+	 *  		this.data = data; 
+	 *  	} 
+	 *  }
+	 */
+     public static int height(BinaryTreeNode<Integer> root){
+         if(root==null){
+            return 0;
+        } 
+         int leftheight=height(root.left);
+          int rightheight=height(root.right);
+
+         return Math.max(1+leftheight,1+rightheight);
+     }
+    public static boolean isbalance(BinaryTreeNode<Integer> root){
+        if(root==null){
+            return true;
+        }
+        int leftis=height(root.left);
+        int isright=height(root.right);
+        if(Math.abs(leftis-isright)>1){
+            return true;
+                }
+       boolean isballeft=isbalance(root.left);
+        boolean isbalright =isbalance(root.left);
+        if(isballeft==true&&isbalright==true){
+            return true;
+        }
+        else {
+           return  false;
+        }
+    }
+	
+	public static int largestBSTSubtree(BinaryTreeNode<Integer> root) {
+		if(root==null){
+            return 0;
+        }
+        if(isbalance(root)==true){
+            return height(root);
+        }
+        else{
+        int leftsub=largestBSTSubtree( root.left);
+        int rightsub=largestBSTSubtree(root.right);
+        
+        return Math.max(leftsub,rightsub);
+        }
+	}
+
+}

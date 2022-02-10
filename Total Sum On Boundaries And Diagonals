@@ -1,0 +1,44 @@
+
+public class Solution {
+
+	public static void totalSum(int[][] mat) {
+		//Your code goes here
+        
+        
+        int row=mat.length;
+          int sum=0;
+        if(row==0)
+        {
+            sum=0;
+        }
+        else
+        {
+          
+            int col=mat[0].length;
+            
+            for(int i=0;i<row;i++)
+            {
+                for(int j=0;j<col;j++)
+                {
+                    if(i==j ||i+j==row-1)
+                    {
+                      sum+=mat[i][j];  
+                    }
+                    
+                    else if(i==0 || j==0 || i==row-1 ||j==col-1)
+                    {
+                        sum+=mat[i][j];
+                    }
+                    
+                }
+            }
+        }
+            
+            System.out.print(sum);
+            
+            
+            
+            
+        }
+	}
+

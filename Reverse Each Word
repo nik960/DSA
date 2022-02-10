@@ -1,0 +1,47 @@
+
+public class Solution {
+
+	public static String reverseEachWord(String str) {
+		//Your code goes here
+	
+		String word="";
+		
+		int currentWordStart=0;
+		int i=0;
+		
+		for(;i<str.length();i++)
+		{
+	
+	
+		if(str.charAt(i)==' '){
+			int currentWordEnd=i-1;
+			String rev="";
+			for(int j=currentWordStart;j<=currentWordEnd;j++)
+			{
+	          rev=str.charAt(j)+rev;			
+			}
+			rev+=" ";
+			word+=rev;
+			currentWordStart=i+1;
+		}
+		
+		}
+		
+		int currentWordEnd=i-1;
+		String rev="";
+		for(int j=currentWordStart;j<=currentWordEnd;j++)
+		{
+          rev=str.charAt(j)+rev;			
+		}
+		rev+=" ";
+		word+=rev;
+		currentWordStart=i+1;
+		
+		
+	
+	
+		return word;
+	}
+	
+
+}

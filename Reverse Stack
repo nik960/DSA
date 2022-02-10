@@ -1,0 +1,27 @@
+import java.util.Stack;
+public class Solution {
+
+	public static void reverseStack(Stack<Integer> input, Stack<Integer> extra) {
+		//Your code goes here
+        if(input.size()<=1)
+        {
+            return;
+        }
+        int first=input.pop();
+        
+        reverseStack(input,extra);
+        while(!input.isEmpty())
+        {
+            int newFirst=input.pop();
+            extra.push(newFirst);
+        }
+        
+        input.push(first);
+        
+        while(!extra.isEmpty())
+        {
+            int p=extra.pop();
+            input.push(p);
+        }
+	}
+}

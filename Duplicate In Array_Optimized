@@ -1,0 +1,21 @@
+public class Solution {
+
+	public static int findDuplicate(int[] arr) {
+		//Your code goes here
+        
+        int n=arr.length;
+        
+        int totalSum=(n-2)*(n-1)/2;
+        
+        int sumArray=0;
+        
+        for(int i=0;i<arr.length;i++)
+        {
+            sumArray+=arr[i];
+        }
+        
+        int diff=Math.abs(sumArray-totalSum);
+        return diff;
+        
+	}
+}

@@ -1,0 +1,45 @@
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class LinkedListNode<T> {
+        T data;
+        LinkedListNode<T> next;
+    
+        public LinkedListNode(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+public class Solution {
+
+
+	public static int findNodeRec(LinkedListNode<Integer> head, int n) {
+    	//Your code goes here
+        LinkedListNode<Integer> root=head;
+        int c=0;
+        while(root!=null)
+        {
+            c++;
+            root=root.next;
+        }
+        return findIndex(head,n,0,c);
+	}
+    public static int findIndex(LinkedListNode<Integer> start,int n,int index,int c)
+    {
+        
+        if(index>=c)
+        {
+            return -1;
+        }
+        if(start.data==n)
+        {
+            return index;
+        }
+        
+        return findIndex(start.next,n,index+1,c);
+    }
+
+}

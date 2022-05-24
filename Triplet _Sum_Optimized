@@ -1,0 +1,64 @@
+import java.util.Arrays;
+public class Solution {	
+
+	public static int tripletSum(int[] arr, int num) {
+		//Your code goes here
+        
+//         int temp = 0;    
+//         for(int i = 0; i<arr.length; i++ ){
+//             for(int j = i+1; j<arr.length; j++){
+                
+//                     if(arr[i]+arr[j]+arr[k] == num)
+//                         temp++;
+                
+//             }
+//         }
+//         return temp;
+        
+                Arrays.sort(arr);
+        int count=0;
+        for(int i=0;i<arr.length;i++){
+            int sum=num-arr[i];
+            int j=i+1;
+            int k=arr.length-1;
+            while(j<k){
+                int pairSum=arr[j]+arr[k];
+            	if(pairSum<sum){
+                    j++;
+                }
+                else if(pairSum>sum){
+                    k--;
+                }
+                else{
+                    if(arr[j]==arr[k]){
+                        int freq=k-j+1;
+                        count+=freq*(freq-1)/2;
+                        break;
+                    }
+                    else{
+                        int sj=j;
+                        while(arr[sj]==arr[j]){
+                            sj++;
+                        }
+                        int freq1=sj-j;
+                        
+                        int ek=k;
+                        while(arr[ek]==arr[k]){
+                            ek--;
+                        }
+                        
+                        int freq2=k-ek;
+                        j=sj;
+                        k=ek;
+                        count+=freq1*freq2;
+                    }
+                }
+            
+            
+            }
+        }
+
+            return count;
+        
+	}
+}
